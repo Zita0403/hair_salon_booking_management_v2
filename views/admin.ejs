@@ -1,0 +1,40 @@
+<%- include("partials/header.ejs") %>
+<div class="d-nav">
+    <ul>
+        <li><a href="" id="hairdressers">Fodrászok</a></li>
+        <li><a href="" id="appointments">Lefoglalt időpontok</a></li>
+    </ul>
+</div>
+<div class="d-content">
+    <table id="appointments-table" class="hidden">
+        <caption>Lefoglalt időpontok</caption>
+        <thead>
+            <tr>
+                <th>Fodrász</th>
+                <th>Időpont</th>
+                <th>Vendég</th>
+                <th>Telefonszám</th>
+                <th>Szolgáltatás</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JS -ből generálva -->
+        </tbody>
+    </table>
+    <table id="hairdresser-list" class="hidden">
+        <caption>Fodrászok</caption>
+        <thead>
+            <tr>
+                <th>Fodrász</th>
+                <th>Telefonszám</th>
+                <th>Email cím</th>
+                <th>Munkaidő</th>
+                <th>Szolgáltatások</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- JS -ből generálva -->
+        </tbody>
+    </table>
+</div>
+<%- include("partials/footer.ejs") %>

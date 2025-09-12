@@ -1,0 +1,68 @@
+<%- include("partials/header.ejs") %>
+<!-- Bemutatkozó szöveg -->
+<section class="first-section" id="introduction-sect">
+    <h2>Bemutatkozás</h2>
+    <div class="flex-container1">
+        <div class="img-container1">
+            <img src="./assets/images/pexels-cottonbro-3993308.jpg" alt="Szalon">
+        </div>
+        <div class="introduction">
+            <p>
+                Üdvözlünk a Fodrász Szalonban, ahol a szakértelem és vendégközpontúság találkozik. Célunk, hogy minden vendégünk elégedetten, megújulva és mosollyal az arcán távozzon tőlünk. Nálunk mindenki megtalálja a számára tökéletes szolgáltatást - legyen szó női vagy férfi frizuráról. 
+            </p>
+            <p>
+                Több éves tapasztalattal rendelkező fodrászaink figyelemmel hallgatják meg vendégeink elképzeléseit, és személyre szabott tanácsokkal segítenek megtalálni a legmegfelelőbb frizurát. Legyen szó hajvágásról, festésről, formázásról vagy éppen egy különleges alkalomra való készülődésről.
+            </p>
+            <p>
+                Férfi vendégeinknek szakálligazítást és borotválást is kínálunk, hogy megjelenésük minden részletében ápolt és stílusos legyen.
+            </p>
+            <p>
+                Modern környezetben, minőségi termékekkel és barátságos légkörrel várunk mindenkit, aki szeretne felfrissülni, szépülni, vagy egyszerűen egy kis énidőre vágyik.
+            </p>
+        </div>
+    </div>
+</section>
+<section class="second-section" id="booking-sect">
+    <h2>Időpontfoglalás</h2>
+    <div class="flex-container2">
+        <!-- Fodrász kártyák JS -ből dinamikusan létrehozva -->
+    </div>
+    <!-- Időpontfoglalás ablak -->
+    <div id="booking-modal" class="modal hidden">
+        <button id="close-btn"><i class="fa-solid fa-x"></i></button>
+        <div class="booking-service">
+            <h2>Időpontfoglalás</h2>
+            <h3 id="hairdresser-name"></h3>
+            <form action="" class="booking" method="post">
+                <label for="service">Szolgáltatások:</label>
+                <select name="service" id="service" class="services-list" required>
+                    <option value="" disabled selected>Válassz egy szolgáltatást</option>
+                </select>
+                <label for="date">Válassz időpontot:</label>
+                <input type="date" class="calendar" id="date" required>
+                <label for="">Válassz idősávot:</label>
+                <div class="appointment-intval">
+                    <!-- radio button időpontok JS -ből -->
+                </div>
+                <label for="client-name">Név:</label>
+                <input type="text" id="client-name" required>
+                <label for="phone-number">Telefonszám:</label>
+                <input type="text" id="phone-number" required>
+                <button id="appointment-btn" type="submit">Foglalás</button>
+            </form>
+        </div>
+    </div>
+    <div id="message-modal" class="modal hidden">
+        <button id="m-close-btn"><i class="fa-solid fa-x"></i></button>
+        <div>
+            <p id="message-text"></p>
+        </div>
+    </div>
+</section>
+<section class="third-section" id="price-sect">
+    <h2>Árlista</h2>
+    <div class="price-table">
+        <!-- JS -ből létrehozva -->
+    </div>
+</section>
+<%- include("partials/footer.ejs") %>

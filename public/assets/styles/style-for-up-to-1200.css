@@ -1,0 +1,74 @@
+/* 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    body {
+        display: grid;
+        grid: 
+            "nav" auto
+            "header" 45vw
+            "main" auto
+            "footer" 15vw
+            / 1fr
+        ;
+    }
+
+    /* Navigation */
+
+    nav {
+        grid-area: nav;
+    }
+
+    /* Header */
+
+    header {
+        grid-area: header;
+    }
+    
+    /* Main */
+    main {
+        grid-area: main;
+        display: grid;
+        grid: 
+            "fst-sect" auto
+            "scnd-sect" auto
+            "thd-sect" auto
+            / 100%
+        ;
+    }
+
+    /* Main/First-section */   
+
+    .first-section {
+        grid-area: fst-sect;
+    }  
+
+    /* Main/Second-section */
+    .second-section {
+        grid-area: scnd-sect;
+    }
+
+    .second-section .flex-container2 {
+        gap: 60px;
+    }
+
+    /*Kártyák*/
+
+    .flex-item {
+        width: 18em;
+        height: auto;
+    }
+
+    .booking-service {
+        width: 50%;
+    }
+
+    /* Main/Third-section */
+    .third-section {
+        grid-area: thd-sect;
+    }
+
+    /* Footer */
+
+    footer {
+        grid-area: footer;
+    }
+}

@@ -1,0 +1,561 @@
+/* 600px and down */
+/* Globális változók */
+:root {
+    --nav-text-color: #a99387;
+    --nav-hover-text-color: #8d7a70;
+
+    --light-background-color: #efe1d9;
+    --dark-background-color: #6e6967;
+
+    --primary-title-text-color: #8b7979;
+    --secondary-title-text-color: #afaca8;
+
+    --primary-text-color: #8b7979;
+    --secondary-text-color: #c8bdb7;
+
+    --btn-background-color: #6e6967;
+    --btn-hover-background-color: #88817e;
+    --btn-text-color: #c2adad;
+    --btn-hover-text-color: #c7c0c0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    background-color: var(--light-background-color);
+    display: grid;
+    grid-template-areas: 
+        "nav" 
+        "header" 
+        "main" 
+        "footer" 
+    ;
+    grid-template-columns: 1fr;
+    grid-template-rows: 15vw 20vw auto 25vw;
+    min-height: 100vh;
+    height: 100%;
+}
+
+/* Navigation általános beállítások */
+nav {
+    grid-area: nav;
+    background-color:transparent;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+}
+
+nav.transparent {
+    background-color: transparent;
+}
+
+nav.solid {
+    background-color: rgba(0, 0, 0, 0.61); 
+}
+
+nav .logo-container {
+    width: 5.5em;
+    height: 5.5em;
+}
+
+nav .logo-container img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Normál menü mobil nézetben */
+.navbar {
+    display: none;
+}
+
+/* Mobil menü */
+.hamburger {
+    display: block;
+    position: relative;
+    padding: 20px;
+}
+
+.dropdown-menu {
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.dropdown-menu.open {
+    height: auto; 
+    opacity: 1;
+    visibility: visible;
+    padding: 10px;
+}
+
+.toggle-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--nav-text-color);
+}
+
+.dropdown-menu li {
+    padding: 15px;
+    position: relative;
+    
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: var(--nav-text-color);
+    display: block;
+    font-size: 22px;
+}
+
+.dropdown-menu > li:hover > a  {
+    color: var(--nav-hover-text-color);
+}
+
+/* Header */
+
+header {
+    grid-area: header;
+    background-color: var(--dark-background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    padding-left: 20px;
+    justify-self: center;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 30px;
+    color: var(--secondary-title-text-color)
+}
+
+/* Main */
+main {
+    background-color: var(--light-background-color);
+    grid-area: main;
+    max-height: 100%;
+    display: grid;
+    grid-template-rows: auto auto;
+    height: 100%;
+}
+
+.d-nav {
+    background-color: var(--dark-background-color);
+    height: 100%;
+    display: flex;
+}
+
+.d-nav ul {
+    list-style: none;
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.d-nav li {
+    padding: 10px 0;
+}
+
+.d-nav li a {
+    color: var(--btn-text-color);
+    text-decoration: none;
+    padding: 5px;
+}
+
+.d-nav li a:hover {
+    color: var(--btn-hover-text-color)
+}
+
+.d-content {
+    overflow-x: auto;
+    background-color: var(--light-background-color);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    min-width: 600px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table caption {
+    color: var(--primary-text-color);
+    padding: 10px 0;
+    font-size: 1.5rem;
+}
+
+table, th, td {
+    color: var(--secondary-text-color);
+    border: 3px solid var(--light-background-color);
+    border-collapse: collapse;
+    background-color: var(--dark-background-color);
+    width: auto;
+    word-break: break-word;
+}
+
+th, td {
+    padding: 20px 5px;
+}
+
+tr:hover td{
+    cursor: pointer;
+    background-color: var(--btn-hover-background-color);
+    color: var(--btn-hover-text-color);
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+/* Footer */
+
+footer {
+    grid-area: footer;
+    background-color: var(--dark-background-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+footer .footer-nav {
+    padding: 20px 0;
+}
+
+footer .footer-nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+footer .footer-nav a {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+}
+
+footer .footer-nav a:hover {
+    color: var(--btn-hover-text-color);
+}
+
+footer .social-media {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.social-media li img:hover {
+    cursor: pointer;
+}
+
+/* 600px and up */
+@media only screen and (min-width: 600px) {
+    body {
+        font-size: 16px;
+        display: grid;
+        grid-template-areas: 
+            "nav" 
+            "header" 
+            "main" 
+            "footer" 
+        ;
+        grid-template-columns: 1fr;
+        grid-template-rows: 15vw 20vw auto 25vw;
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    /* Navigation */
+
+    nav {
+        grid-area: nav;
+    }
+
+    /* Header */
+
+    header {
+        grid-area: header;
+    }
+
+    /* Main */
+    main {
+        grid-area: main;
+    }
+
+    /* Footer */
+
+    footer {
+        grid-area: footer;
+    }
+}
+
+/* 768px and up */
+@media only screen and (min-width: 768px) {
+    body {
+        font-size: 18px;
+        display: grid;
+        grid-template-areas: 
+            "nav" 
+            "header" 
+            "main" 
+            "footer" 
+        ;
+        grid-template-columns: 1fr;
+        grid-template-rows: 15vw 20vw auto 25vw;
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    /* Navigation */
+
+    nav {
+        grid-area: nav;
+    }
+
+    /* Header */
+
+    header {
+        grid-area: header;
+    }
+
+    /* Main */
+    main {
+        grid-area: main;
+    }
+
+    /* Footer */
+
+    footer {
+        grid-area: footer;
+    }
+}
+
+/* (992px and up) */
+@media only screen and (min-width: 992px) {
+    body {
+        font-size: 16px;
+        display: grid;
+        grid-template-areas: 
+            "nav" 
+            "header" 
+            "main" 
+            "footer" 
+        ;
+        grid-template-columns: 1fr;
+        grid-template-rows: 15vw auto auto 15vw;
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    /* Navigation */
+
+    .hamburger {
+        display: none;
+    }
+
+    .toggle-btn {
+        display: none;
+    }
+
+    nav {
+        grid-area: nav;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .navbar {
+        display: flex;
+    }
+
+    .main-menu {
+        display: flex;
+        list-style: none;
+        gap: 2em;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .main-menu > li {
+        position: relative;
+    }
+
+    .main-menu li a {
+        text-decoration: none;
+        color: var(--nav-text-color);
+        font-size: 20px;
+        padding: 10px;
+        display: block;
+    }
+
+    .main-menu > li:hover > a {
+        color: var(--nav-hover-text-color);
+    }
+
+    .main-menu li:focus-within > .sub-menu,
+    .main-menu li:hover > .sub-menu {
+        display: initial;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: var(--primary-color);
+        display: block;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    .sub-menu {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        top: 51px;
+        left: 0;
+        background-color: var(--background-color);
+        border-radius: 14px;
+        box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.2);
+        list-style: none;
+        padding: 0;
+        min-width: 200px;
+    }
+
+    .sub-menu > li {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .sub-menu a {
+        text-decoration: none;
+        color: var(--primary-color);
+    }
+
+    .sub-menu >li:hover > a {
+        color: var(--hover-text-color);
+    }
+
+    /* Header */
+
+    header {
+        grid-area: header;
+        padding: 30px 0;
+    }
+
+    /* Main */
+    main {
+        grid-area: main;
+        grid-template-columns: auto 2fr;
+        grid-template-rows: 1fr;
+    }
+
+    .d-nav {
+        height: 100%;
+    }
+
+    .d-nav ul {
+        flex-direction: column;
+        justify-content: center;
+    } 
+    
+    table {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    table, th, td {
+        width: auto;
+    }
+
+    /* Footer */
+
+    footer {
+        grid-area: footer;
+    }
+}
+
+/* 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    body {
+        display: grid;
+        grid-template-areas: 
+            "nav" 
+            "header" 
+            "main" 
+            "footer" 
+        ;
+        grid-template-columns: 1fr;
+        grid-template-rows: 15vw auto auto 15vw;
+        min-height: 100vh;
+        height: 100%;
+    }
+
+    /* Navigation */
+
+    nav {
+        grid-area: nav;
+    }
+
+    /* Header */
+
+    header {
+        grid-area: header;
+    }
+    
+    /* Main */
+    main {
+        grid-area: main;
+        grid-template-columns: auto 2fr;
+    }
+
+    /* Footer */
+
+    footer {
+        grid-area: footer;
+    }
+}

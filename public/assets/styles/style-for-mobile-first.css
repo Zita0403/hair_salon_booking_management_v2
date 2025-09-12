@@ -1,0 +1,535 @@
+/* 600px and down */
+/* Globális változók */
+:root {
+    --nav-text-color: #a99387;
+    --nav-hover-text-color: #8d7a70;
+
+    --light-background-color: #efe1d9;
+    --dark-background-color: #6e6967;
+
+    --primary-title-text-color: #8b7979;
+    --secondary-title-text-color: #afaca8;
+
+    --primary-text-color: #8b7979;
+    --secondary-text-color: #c8bdb7;
+
+    --btn-background-color: #6e6967;
+    --btn-hover-background-color: #88817e;
+    --btn-text-color: #c2adad;
+    --btn-hover-text-color: #c7c0c0;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+    background-color: var(--light-background-color);
+    display: grid;
+    grid: 
+        "nav" auto
+        "headerS" 50vw
+        "main" auto
+        "footer" 25vw
+        / 1fr
+    ;
+}
+
+/* Navigation általános beállítások */
+nav {
+    grid-area: nav;
+    background-color:transparent;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+    width: 100%;
+}
+
+nav.transparent {
+    background-color: transparent;
+}
+
+nav.solid {
+    background-color: rgba(0, 0, 0, 0.61); 
+}
+
+nav .logo-container {
+    width: 5.5em;
+    height: 5.5em;
+}
+
+nav .logo-container img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Normál menü mobil nézetben */
+.navbar {
+    display: none;
+}
+
+/* Mobil menü */
+.hamburger {
+    display: block;
+    position: relative;
+    padding: 20px;
+}
+
+.dropdown-menu {
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.dropdown-menu.open {
+    height: auto; 
+    opacity: 1;
+    visibility: visible;
+    padding: 10px;
+}
+
+.toggle-btn {
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--nav-text-color);
+}
+
+.dropdown-menu li {
+    padding: 15px;
+    position: relative;
+    
+}
+
+.dropdown-menu li a {
+    text-decoration: none;
+    color: var(--nav-text-color);
+    display: block;
+    font-size: 22px;
+}
+
+.dropdown-menu > li:hover > a  {
+    color: var(--nav-hover-text-color);
+}
+
+/* Header */
+
+header {
+    grid-area: header;
+    background-color: var(--light-background-color);
+    background-image: url(../images/pexels-nickoloui-1319460.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%); 
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main */
+main {
+    background-color: var(--light-background-color);
+    grid-area: main;
+    display: grid;
+    grid: 
+        "fst-sect" auto
+        "scnd-sect" auto
+        "thd-sect" auto
+        / 100%
+    ;
+}
+
+h2 {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    align-self: flex-start;
+    padding-left: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+/* Main/First-section */
+
+.first-section {
+    grid-area: fst-sect;
+    background-color: var(--light-background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+.first-section h2 {
+    color: var(--primary-title-text-color);
+}
+
+.first-section .flex-container1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 50px;
+    gap: 20px;
+}
+
+.flex-container1 .img-container1 {
+    width: 20em;
+    height: 30em;
+    box-shadow: 10px 10px 20px 0px #452e2b52;
+}
+
+.flex-container1 .img-container1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flex-container1 .introduction p {
+    line-height: 1.5;
+    text-indent: 20px;
+    text-align: justify;
+    color: var(--primary-text-color);
+}
+
+/* Main/Second-section */
+.second-section {
+    grid-area: scnd-sect;
+    background-color: var(--dark-background-color);
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--secondary-text-color);
+}
+
+.second-section h2 {
+    color: var(--secondary-title-text-color);
+}
+
+.second-section .flex-container2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+/*Kártyák*/
+
+.flex-item {
+    width: 26em;
+    height: auto;
+    background-image: linear-gradient(#e6ded8, #a99588);
+    box-shadow: 10px 10px 20px 0px #452e2b52;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 20px 10px;
+    border-radius: 0 28px 0 28px;
+}
+
+.flex-item:hover {
+    cursor: pointer;
+}
+
+.image-container {
+    border-radius: 50%;
+    width: 8em;
+    height: 8em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-self: center;
+}
+
+.flex-item > h3 {
+    font-size: 18px;
+    align-self: center;
+    color: var(--primary-text-color);
+}
+
+.flex-item h5 {
+    font-size: 16px;
+    align-self: center;
+    color: var(--primary-text-color);
+}
+
+.flex-item h6 {
+    font-size: 14px;
+    align-self: center;
+    color: var(--primary-text-color);
+}
+
+.text-container p{
+    align-self: center;
+    line-height: 1.5;
+    text-align: justify;
+    color: var(--primary-text-color);
+}
+
+.text-container.services ul {
+    padding-left: 40px;
+    list-style: circle;
+    color: var(--primary-text-color);
+}
+
+.appointment {
+    font-size: 16px;
+    align-self: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    width: 80%;
+    height: auto;
+    border: none;
+    padding: 10px;
+    background-color: var(--btn-background-color);
+    color: var(--btn-text-color);
+    margin-top: auto;
+}
+
+.fa-x:hover {
+    color: var(--btn-hover-text-color);
+}
+
+.appointment:hover {
+    cursor: pointer;
+    background-color: var(--btn-hover-background-color);
+    color: var(--btn-hover-text-color);
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: auto;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.741); 
+    backdrop-filter: blur(30px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10000;
+    gap: 3px;
+    padding: 20px 0px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+#close-btn {
+    font-size: 24px;
+    background: none;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    color: var(--nav-text-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#appointment-btn {
+    font-size: 16px;
+    align-self: center;
+    justify-content: space-between;
+    border-radius: 12px;
+    width: 50%;
+    height: auto;
+    border: none;
+    padding: 10px;
+    background-color: var(--btn-background-color);
+    color: var(--btn-text-color);
+    margin-top: auto; 
+}
+
+#appointment-btn:hover {
+    cursor: pointer;
+    background-color: var(--btn-hover-background-color);
+    color: var(--btn-hover-text-color);
+}
+
+.booking {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 25px;
+}
+
+.booking > :last-child {
+    grid-column: span 2;
+    justify-self: center;
+}
+
+.booking-service {
+    display: grid;
+    gap: 15px;
+    width: 70%;
+}
+
+.booking-service h2 {
+    text-align: center;
+}
+
+.booking .calendar,
+.booking input,
+.booking select {
+    background-color: var(--light-background-color);
+    padding: 5px;
+}
+
+.booking .calendar,
+.booking input,
+.booking select:hover {
+    cursor: pointer;
+    background-color: var(--light-background-color);
+}
+
+.appointment-intval {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.appointment-intval label {
+    text-align: center;
+    padding: 5px 0px;
+}
+
+#message-modal {
+    width: 50%;
+    height: 25%;
+}
+
+#message-text {
+    padding: 20px;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+#m-close-btn {
+    font-size: 24px;
+    background: none;
+    padding: 15px;
+    border: none;
+    cursor: pointer;
+    color: var(--nav-text-color);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Main/Third-section */
+
+.third-section {
+    grid-area: thd-sect;
+    background-color: var(--light-background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+.third-section > h2 {
+    color: var(--primary-title-text-color);
+}
+
+.price-table {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table, th, td {
+    color: var(--secondary-text-color);
+    border: 3px solid var(--light-background-color);
+    border-collapse: collapse;
+    background-color: var(--dark-background-color);
+    width: auto;
+}
+
+th, td {
+    padding: 20px 30px;
+}
+
+tr:hover td{
+    cursor: pointer;
+    background-color: var(--btn-hover-background-color);
+    color: var(--btn-hover-text-color);
+}
+
+/* Footer */
+
+footer {
+    grid-area: footer;
+    background-color: var(--dark-background-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+footer .footer-nav {
+    padding: 20px 0;
+}
+
+footer .footer-nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+footer .footer-nav a {
+    color: var(--secondary-text-color);
+    text-decoration: none;
+}
+
+footer .footer-nav a:hover {
+    color: var(--btn-hover-text-color);
+}
+
+footer .social-media {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+
+.social-media li img:hover {
+    cursor: pointer;
+}
