@@ -1,5 +1,5 @@
 <p align="right">
-  🌐 <a href="README.md">Magyar veruó</a>
+  🌐 <a href="README.md">Magyar verzió</a>
 </p>
 
 # Hair Salon – Appointment Booking & Administration System
