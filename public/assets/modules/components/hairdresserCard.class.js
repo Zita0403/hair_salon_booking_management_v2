@@ -29,7 +29,7 @@ export class HairdressersCard {
         this.id = datas.id;
         this.name = datas.name;
         this.phoneNumber = datas.phoneNumber;
-        this.email = datas.emailAddresse;
+        this.email = datas.emailAddress;
         this.workingHours = datas.workingHours;
         this.services = datas.services;
         this.imgSrc = datas.imgSrc;

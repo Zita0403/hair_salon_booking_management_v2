@@ -6,13 +6,11 @@ let appointments = [];
 
 export async function fetchAppointments () {
     try {
-        const api_key = "prooktatas123";
-        const response = await fetch(`http://salonsapi.prooktatas.hu/api/appointments/${api_key}`);
+        const response = await fetch(`/admin/get-appointments`);
         appointments = await response.json();
         // console.log(appointments);
         
         return appointments;
-        
     } catch (error) {
         console.log(error);
         return [];

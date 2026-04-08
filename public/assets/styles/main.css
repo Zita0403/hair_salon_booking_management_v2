@@ -36,7 +36,7 @@ body {
         "nav" auto
         "headerS" 50vw
         "main" auto
-        "footer" 25vw
+        "footer" auto
         / 1fr
     ;
 }
@@ -135,7 +135,6 @@ nav .logo-container img {
 }
 
 /* Header */
-
 header {
     grid-area: header;
     background-color: var(--light-background-color);
@@ -172,7 +171,6 @@ h2 {
 }
 
 /* Main/First-section */
-
 .first-section {
     grid-area: fst-sect;
     background-color: var(--light-background-color);
@@ -239,9 +237,8 @@ h2 {
 }
 
 /*Kártyák*/
-
 .flex-item {
-    width: 26em;
+    width: 20em;
     height: auto;
     background-image: linear-gradient(#e6ded8, #a99588);
     box-shadow: 10px 10px 20px 0px #452e2b52;
@@ -382,7 +379,7 @@ h2 {
 
 .booking {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 1fr;
     gap: 25px;
 }
 
@@ -394,7 +391,8 @@ h2 {
 .booking-service {
     display: grid;
     gap: 15px;
-    width: 70%;
+    width: 100%;
+    padding: 0px 20px;
 }
 
 .booking-service h2 {
@@ -449,7 +447,6 @@ h2 {
 }
 
 /* Main/Third-section */
-
 .third-section {
     grid-area: thd-sect;
     background-color: var(--light-background-color);
@@ -491,13 +488,14 @@ tr:hover td{
 }
 
 /* Footer */
-
 footer {
     grid-area: footer;
     background-color: var(--dark-background-color);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    gap: 20px;
     padding: 20px 0;
 }
 
@@ -530,6 +528,494 @@ footer .social-media {
     gap: 20px;
 }
 
-.social-media li img:hover {
+.social-media li i {
+    color: var(--secondary-text-color);
+    font-size: 32px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.social-media li i:hover {
     cursor: pointer;
+    color: var(--btn-hover-text-color);
+    transform: scale(1.2);
+}
+
+#top {
+    position: fixed;
+    bottom: 30px; 
+    right: 30px;  
+    padding: 10px;
+    cursor: pointer;
+    display: none; 
+    z-index: 1000; 
+}
+
+#top button {
+    background-color: transparent;
+    padding: 5px;
+    border: none;
+}
+
+#top button i {
+    color: rgb(38, 36, 31);
+    font-size: 32px;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+#top button:hover i {
+    cursor: pointer;
+    color: var(--btn-hover-text-color);
+    transform: scale(1.2);
+    border-radius: 50%;
+    border: 3px solid var(--btn-hover-text-color);
+}
+
+/* 600px and up */
+@media only screen and (min-width: 600px) {
+    body {
+        font-size: 16px;
+        display: grid;
+        grid: 
+            "nav" auto
+            "header" 45vw
+            "main" auto
+            "footer" auto
+            / 1fr
+        ;
+    }
+
+    /* Navigation */
+    nav {
+        grid-area: nav;
+    }
+
+    /* Header */
+    header {
+        grid-area: header;
+    }
+
+    /* Main */
+    main {
+        grid-area: main;
+        display: grid;
+        grid: 
+            "fst-sect" auto
+            "scnd-sect" auto
+            "thd-sect" auto
+            / 100%
+        ;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    /* Main/First-section */
+    .first-section {
+        grid-area: fst-sect;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    /* Main/Second-section */
+    .second-section {
+        grid-area: scnd-sect;
+        padding-bottom: 40px;
+    }
+
+    /*Kártyák*/
+    .flex-item {
+        width: 25em;
+        height: auto;
+    }
+
+    .flex-item > h3 {
+        font-size: 20px;
+    }
+
+    .flex-item h5 {
+        font-size: 18px;
+    }
+
+    .flex-item h6 {
+        font-size: 16px;
+    }
+
+    .appointment {
+        font-size: 14px;
+    }
+
+    /* Main/Third-section */
+    .third-section {
+        grid-area: thd-sect;
+        padding-bottom: 40px;
+    }
+
+    /* Footer */
+    footer {
+        grid-area: footer;
+    }
+}
+
+/* 768px and up */
+@media only screen and (min-width: 768px) {
+    body {
+        font-size: 18px;
+        display: grid;
+        grid: 
+            "nav" auto
+            "header" 45vw
+            "main" auto
+            "footer" auto
+            / 1fr
+        ;
+    }
+
+    /* Navigation */
+    nav {
+        grid-area: nav;
+    }
+
+    /* Header */
+    header {
+        grid-area: header;
+    }
+
+    /* Main */
+    main {
+        grid-area: main;
+        display: grid;
+        grid: 
+            "fst-sect" auto
+            "scnd-sect" auto
+            "thd-sect" auto
+            / 100%
+        ;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    /* Main/First-section */
+    .first-section {
+        grid-area: fst-sect;
+    }
+
+    /* Main/Second-section */
+    .second-section {
+        grid-area: scnd-sect;
+    }
+
+    .booking {
+        grid-template-columns: auto auto;
+    }
+
+    /* Main/Third-section */
+    .third-section {
+        grid-area: thd-sect;
+    }
+
+    /*Kártyák*/
+    .flex-item {
+        width: 30em;
+        height: auto;
+    }
+
+    .flex-item > h3 {
+        font-size: 22px;
+    }
+
+    .flex-item h5 {
+        font-size: 20px;
+    }
+
+    .flex-item h6 {
+        font-size: 18px;
+    }
+
+    .appointment {
+        font-size: 16px;
+    }
+
+    .price-table table, th, td {
+        width: 50%;
+    }
+
+    /* Footer */
+    footer {
+        grid-area: footer;
+    }
+}
+
+/* (992px and up) */
+@media only screen and (min-width: 992px) {
+    body {
+        font-size: 16px;
+        display: grid;
+        grid: 
+            "nav" auto
+            "header" 45vw
+            "main" auto
+            "footer" auto 
+            / 1fr
+        ;
+    }
+
+    /* Navigation */
+    .hamburger {
+        display: none;
+    }
+
+    .toggle-btn {
+        display: none;
+    }
+
+    nav {
+        grid-area: nav;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 20px;
+        padding: 20px;
+    }
+
+    .navbar {
+        display: flex;
+    }
+
+    .main-menu {
+        display: flex;
+        list-style: none;
+        gap: 2em;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .main-menu > li {
+        position: relative;
+    }
+
+    .main-menu li a {
+        text-decoration: none;
+        color: var(--nav-text-color);
+        font-size: 20px;
+        padding: 10px;
+        display: block;
+    }
+
+    .main-menu > li:hover > a {
+        color: var(--nav-hover-text-color);
+    }
+
+    .main-menu li:focus-within > .sub-menu,
+    .main-menu li:hover > .sub-menu {
+        display: initial;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: var(--primary-color);
+        display: block;
+        padding: 20px;
+        font-size: 20px;
+    }
+
+    .sub-menu {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        top: 51px;
+        left: 0;
+        background-color: var(--background-color);
+        border-radius: 14px;
+        box-shadow: 2px 2px 25px rgba(0, 0, 0, 0.2);
+        list-style: none;
+        padding: 0;
+        min-width: 200px;
+    }
+
+    .sub-menu > li {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .sub-menu a {
+        text-decoration: none;
+        color: var(--primary-color);
+    }
+
+    .sub-menu >li:hover > a {
+        color: var(--hover-text-color);
+    }
+
+    /* Header */
+    header {
+        grid-area: header; 
+    }
+
+    /* Main */
+    main {
+        grid-area: main;
+        display: grid;
+        grid: 
+            "fst-sect" auto
+            "scnd-sect" auto
+            "thd-sect" auto
+            / 100%
+        ;
+    }
+
+    /* Main/First-section */   
+    .first-section {
+        grid-area: fst-sect;
+    }
+
+    .first-section .flex-container1 {
+        display: flex;                
+        flex-direction: row;     
+        justify-content: space-around;      
+        align-items: center;         
+        gap: 2rem; 
+    }
+
+    .img-container1 {
+        flex: 1;
+        width: 20em;
+        height: 40em;
+    }
+
+    .introduction {
+        flex: 1;
+    }
+
+    /* Main/Second-section */
+    .second-section {
+        grid-area: scnd-sect;
+    }
+
+    .second-section .flex-container2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 90px;
+    }
+
+    /*Kártyák*/
+    .flex-item {
+        width: 20em;
+        height: auto;
+    }
+
+    .flex-item:hover {
+        box-shadow: 2px 2px 25px rgba(255, 255, 255, 0.2);
+    }
+
+    .flex-item > h3 {
+        font-size: 20px;
+    }
+
+    .flex-item h5 {
+        font-size: 18px;
+    }
+
+    .flex-item h6 {
+        font-size: 14px;
+    }
+
+    .appointment {
+        font-size: 18px;
+        padding: 8px;
+    }
+
+    .booking-service {
+        width: 60%;
+    }
+
+    /* Main/Third-section */
+    .third-section {
+        grid-area: thd-sect;
+    }
+
+    /* Footer */
+    footer {
+        grid-area: footer;
+        flex-direction: row;
+    }
+}
+
+/* 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    body {
+        display: grid;
+        grid: 
+            "nav" auto
+            "header" 45vw
+            "main" auto
+            "footer" auto
+            / 1fr
+        ;
+    }
+
+    /* Navigation */
+    nav {
+        grid-area: nav;
+    }
+
+    /* Header */
+    header {
+        grid-area: header;
+    }
+    
+    /* Main */
+    main {
+        grid-area: main;
+        display: grid;
+        grid: 
+            "fst-sect" auto
+            "scnd-sect" auto
+            "thd-sect" auto
+            / 100%
+        ;
+    }
+
+    /* Main/First-section */   
+    .first-section {
+        grid-area: fst-sect;
+    }  
+
+    /* Main/Second-section */
+    .second-section {
+        grid-area: scnd-sect;
+    }
+
+    .second-section .flex-container2 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /*Kártyák*/
+    .flex-item {
+        width: 18em;
+        height: auto;
+    }
+
+    .booking-service {
+        width: 50%;
+    }
+
+    #booking-modal {
+        width: 60%;
+    }
+
+    /* Main/Third-section */
+    .third-section {
+        grid-area: thd-sect;
+    }
+
+    /* Footer */
+    footer {
+        grid-area: footer;
+    } 
 }

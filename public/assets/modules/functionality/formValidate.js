@@ -20,7 +20,7 @@ export function validateForm () {
     if (!customer_name) {
         messageModal("Kérlek add meg a neved az időpontfoglaláshoz!");
         return false;
-    } else if (!customer_phone || !customer_phone.match(/([+][36]{2}|[06]{2})(\s*-?\s*)([1-90]{2})(\s*-?\/?\s*)([0-9]{3})(\s*-?\s*)([0-9]{4})/)) {
+    } else if (!customer_phone || !customer_phone.match(/([+][36]{2}|[06]{2})(\s*-?\s*)([1-9]{2})(\s*-?\/?\s*)([0-9]{3})(\s*-?\s*)([0-9]{4})/)) {
         messageModal("Kérlek addj meg egy érvényes telefonszámot az időpontfoglaláshoz!");
         return false;
     } else if (!service) {

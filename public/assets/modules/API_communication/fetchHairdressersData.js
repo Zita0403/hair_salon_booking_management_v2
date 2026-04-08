@@ -1,21 +1,20 @@
 console.log("Fodrászok adatainak lekérdezése fetch()");
 /*
     Fodrászok adatainak lekérdezése a kártyákon való megjelenítéshez
-        - hozzá imgDatas.js imgToHairdressers object -ből minden fodrászhoz kép csatolása
         - munkaidő formázása
 */
 
-export async function getHairdressers (imgDatas) {
+export async function getHairdressers () {
     try {
-        const response = await fetch("http://salonsapi.prooktatas.hu/api/hairdressers");
+        const response = await fetch("http://localhost:4000/api/hairdressers");
         const hairdressers = await response.json();
 
         return hairdressers.map(hairdresser => {
-            const imgSrc = imgDatas[hairdresser.name];
+            const imgSrc = hairdresser.profile_image;
             const name = hairdresser.name;
             const id = hairdresser.id;
             const phoneNumber = hairdresser.phone_number;
-            const emailAddresse = hairdresser.email;
+            const emailAddress = hairdresser.email;
             const startTime = hairdresser.work_start_time.split(":").slice(0, 2).join(":");
             const endTime = hairdresser.work_end_time.split(":").slice(0, 2).join(":");
             const workingHours =  startTime + " - " + endTime;
@@ -26,7 +25,7 @@ export async function getHairdressers (imgDatas) {
                 id, 
                 name, 
                 phoneNumber, 
-                emailAddresse, 
+                emailAddress, 
                 workingHours, 
                 services
             };

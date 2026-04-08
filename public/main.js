@@ -24,7 +24,7 @@ window.addEventListener('scroll', function(){
 const navToggleBtn = document.querySelector(".toggle-btn");
 const navbarIcon = navToggleBtn.querySelector("i")
 
-navToggleBtn. addEventListener("click", function () {
+navToggleBtn.addEventListener("click", function () {
     let dropDownMenu = document.querySelector(".dropdown-menu");
     dropDownMenu.classList.toggle("open");
 
@@ -39,6 +39,24 @@ navToggleBtn. addEventListener("click", function () {
 });
 
 /*
+    Lap tetejére görgetés
+*/ 
+
+const btn = document.querySelector("#top");
+
+window.addEventListener("scroll", () => {
+if (window.scrollY > 300) { 
+    btn.style.display = "block";
+} else {
+    btn.style.display = "none";
+}
+});
+
+btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/*
     Főoldal fodrászok kártyák létrehozása az időpontfoglaláshoz és √
         - Modal adatainak lekérdezése, megjelenítése √
 */
@@ -46,7 +64,6 @@ navToggleBtn. addEventListener("click", function () {
 import { fetchAppointments } from "/assets/modules/API_communication/appointmentManaging.js"; // Lefoglalt időpontok kezelése
 import { getHairdressers } from "/assets/modules/API_communication/fetchHairdressersData.js"; // Fodrászok adatainak lekérdezése a kártyákon való megjelenítéshez
 import { HairdressersCard } from "/assets/modules/components/hairdresserCard.class.js"; // Fodrász kártyák kinézete, adatai HairdressersCard class példányosításával
-import { imgToHairdressers } from "/assets/modules/functionality/imgDatas.js"; // Fodrászokhoz tartozó képek
 import { bookingModal } from "/assets/modules/components/appointmentModal.js"; 
 import { periodsByHairdresser } from "/assets/modules/functionality/timeSlots.js"; // 30 perces idősávok létrehozása
 
@@ -56,7 +73,7 @@ const container = document.querySelector(".flex-container2");
 
 if (container) {
 
-    getHairdressers(imgToHairdressers)
+    getHairdressers()
         .then(async datas => {
             const appointments = await fetchAppointments();
             const timeIntervalsForAppointment = {};
@@ -87,9 +104,8 @@ if (container) {
 */
 
 import { renderPriceTable } from "/assets/modules/API_communication/renderPriceTable.js"; // Táblázat létrehozása árakkal
-import { priceList } from "/assets/modules/functionality/priceList.js"; // Fiktív árak a szolgáltatásokhoz
 
-renderPriceTable(priceList);
+renderPriceTable();
 
 /*
     Időpont foglalás
@@ -153,7 +169,7 @@ if (appointBtn) {
         );
         
         try {
-            const res = await fetch(`http://salonsapi.prooktatas.hu/api/appointments/${api_key}`, {
+            const res = await fetch(`http://localhost:4000/api/appointments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -191,26 +207,37 @@ if (appointBtn) {
 
 import { renderHairdresserList } from "/assets/modules/components/adminHairdressersTable.js"
 import { renderDashboardTable } from "/assets/modules/API_communication/adminAppointmentsTable.js";
+import { toggleDetails } from "/assets/modules/functionality/toggleDetails.js";
+
+window.toggleDetails = toggleDetails;
 
 if(document.querySelector("#hairdresser-list")) {
     renderHairdresserList();
     
-    document.querySelector(".d-nav #hairdressers").addEventListener("click", (e) => {
-        // console.log(document.querySelector(".d-nav #hairdressers"));
-        
+document.querySelector(".d-nav #hairdressers").addEventListener("click", (e) => {
         e.preventDefault();
-        renderDashboardTable();
+        renderHairdresserList(); 
+
         document.querySelector("#appointments-table").classList.add("hidden");
         document.querySelector("#hairdresser-list").classList.remove("hidden");
+        
+        document.querySelector("#appointments-list-mobile").classList.add("hidden");
+        document.querySelector("#hairdresser-list-mobile").classList.remove("hidden");
     });
-
 
     document.querySelector(".d-nav #appointments").addEventListener("click", (e) => {
         e.preventDefault();
-        renderHairdresserList();
+        renderDashboardTable(); 
+
+
         document.querySelector("#hairdresser-list").classList.add("hidden");
         document.querySelector("#appointments-table").classList.remove("hidden");
+
+
+        document.querySelector("#hairdresser-list-mobile").classList.add("hidden");
+        document.querySelector("#appointments-list-mobile").classList.remove("hidden");
     });
 }
+
 
 
