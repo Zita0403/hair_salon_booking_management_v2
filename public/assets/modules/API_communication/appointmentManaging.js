@@ -6,7 +6,7 @@ let appointments = [];
 
 export async function fetchAppointments () {
     try {
-        const response = await fetch(`/api/admin/get-appointments`);
+        const response = await fetch(`/api/get-appointments`);
         appointments = await response.json();
         // console.log(appointments);
         

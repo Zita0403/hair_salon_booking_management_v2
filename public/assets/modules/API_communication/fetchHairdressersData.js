@@ -6,7 +6,7 @@ console.log("Fodrászok adatainak lekérdezése fetch()");
 
 export async function getHairdressers () {
     try {
-        const response = await fetch("http://localhost:4000/api/hairdressers");
+        const response = await fetch("/api/hairdressers");
         const hairdressers = await response.json();
 
         return hairdressers.map(hairdresser => {

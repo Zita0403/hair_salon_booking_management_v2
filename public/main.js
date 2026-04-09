@@ -169,7 +169,7 @@ if (appointBtn) {
         );
         
         try {
-            const res = await fetch(`http://localhost:4000/api/appointments`, {
+            const res = await fetch(`/api/appointments`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

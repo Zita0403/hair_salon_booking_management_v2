@@ -8,6 +8,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import path from "path";
 import { fileURLToPath } from "url";
+import { createProxyMiddleware } from 'http-proxy-middleware';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -25,13 +26,33 @@ db.connect();
 
 const app = express();
 const port = 3001;
-const API_URL = "http://localhost:4000";
+
+const apiProxy = createProxyMiddleware({
+    target: 'http://localhost:4000',
+    changeOrigin: true,
+    pathRewrite: (path, req) => {
+        const apiKey = process.env.MY_API_KEY;
+        if (path.includes('/get-appointments')) {
+            return `/api/get-appointments/${apiKey}`;
+        }
+        return `/api${path}`; 
+    },
+    onProxyRes: (proxyRes, req, res) => {
+        console.log(`Proxy válasz: ${proxyRes.statusCode} ${req.method} ${req.url}`);
+    }
+});
+
+app.use('/api', (req, res, next) => {
+    return apiProxy(req, res, next);
+});
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "..", "/public")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+;
 
 function requireAuth(req, res, next) {
   const token = req.cookies.token;
@@ -43,7 +64,7 @@ function requireAuth(req, res, next) {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
-    next();
+    return next();
   } catch (err) {
     return res.redirect("/login");
   }
@@ -61,16 +82,16 @@ app.get("/admin", requireAuth, (req, res) => {
   res.render("admin.ejs", { title: "Admin oldal", page: "admin", user: req.user });
 });
 
-app.get("/api/admin/get-appointments", requireAuth, async (req, res) => {
-  try {
-    const apiKey = process.env.MY_API_KEY; 
-    const response = await axios.get(`http://localhost:4000/api/appointments/${apiKey}`);
+// app.get("/api/admin/get-appointments", requireAuth, async (req, res) => {
+//   try {
+//     const apiKey = process.env.MY_API_KEY; 
+//     const response = await axios.get(`/api/appointments/${apiKey}`);
     
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).send("Hiba az adatok lekérésekor");
-  }
-});
+//     res.json(response.data);
+//   } catch (error) {
+//     res.status(500).send("Hiba az adatok lekérésekor");
+//   }
+// });
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;

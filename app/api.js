@@ -98,7 +98,7 @@ app.post("/api/appointments", async (req, res) => {
   }
 });
 
-app.get("/api/appointments/:apiKey", async (req, res) => {
+app.get("/api/get-appointments/:apiKey", async (req, res) => {
   const { apiKey } = req.params;
   if (apiKey !== process.env.MY_API_KEY) {
       return res.status(403).json({ error: "Érvénytelen API kulcs." });

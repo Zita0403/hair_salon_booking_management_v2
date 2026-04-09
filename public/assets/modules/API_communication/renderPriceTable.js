@@ -5,7 +5,7 @@ console.log("Árlista táblázat");
 
 export async function renderPriceTable () {
     try {
-        const response = await fetch("http://localhost:4000/api/services");
+        const response = await fetch("/api/services");
         const services = await response.json();
 
         const pricesTable = document.querySelector(".price-table");
