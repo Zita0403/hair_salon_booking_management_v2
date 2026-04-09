@@ -34,7 +34,9 @@ app.use(bodyParser.json());
 const apiProxy = createProxyMiddleware({
     target: 'http://localhost:4000',
     changeOrigin: true,
+    
     pathRewrite: (path, req) => {
+        console.log("A proxy-hoz érkező nyers path:", path);
         const apiKey = process.env.MY_API_KEY;
         
         // Mivel az app.use('/api', ...) miatt a 'path' már NEM tartalmazza az /api-t
