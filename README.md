@@ -112,6 +112,12 @@ A teszteléshez a következő módon tudsz belépni:
 Ez a jelszó a `hair_salon.sql` script futtatásával kerül be az adatbázisba (titkosított formában). A belépés után a rendszer JWT-alapú munkamenetet indít.
 3. **Munkamenet:** A sikeres bejelentkezés után a rendszer JWT-t generál, melyet HttpOnly sütiben tárol a biztonságos böngészés érdekében.
 
+## Weboldal elérése
+
+A projekt élőben is megtekinthető az alábbi linken: [Nézd meg élőben!](https://hairsalon.zita.dev)
+
+- [Főoldal megnyitása:](http://localhost:3002/)
+
 ## Készítette
 Név: Lukács Zita
 Dátum: 2025. szeptember
