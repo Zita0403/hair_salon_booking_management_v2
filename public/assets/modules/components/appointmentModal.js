@@ -35,6 +35,10 @@ export function bookingModal () {
         const dateInput = document.querySelector("#date");
         const intvalContainer = document.querySelector(".appointment-intval");
 
+        const todayStr = new Date().toISOString().split('T')[0];
+        dateInput.min = todayStr;
+        if (!dateInput.value) dateInput.value = todayStr;
+
         const appointments = await fetchAppointments();
         // console.log(appointments);
         
@@ -44,26 +48,36 @@ export function bookingModal () {
             intvalContainer.innerHTML = "";
 
             
-            const reservedIntval = appointments.filter(appointment => Number(appointment.hairdresser_id) === Number(id) && appointment.appointment_date.startsWith(selectedDate)).map(appointment => appointment.appointment_date.split(" ")[1].slice(0, 5));
+            
+            const reservedIntval = appointments
+                .filter(appointment => Number(appointment.hairdresser_id) === Number(id) && appointment.appointment_date.startsWith(selectedDate))
+                .map(appointment => appointment.appointment_date.split(" ")[1].slice(0, 5));
 
             // console.log("Lefoglalt időpontok:", reservedIntval);
             // console.log("Elérhető idősávok:", intvals);
-
-            const freeIntvals = intvals.filter(time => !reservedIntval.includes(time));
+            const freeIntvals = intvals.filter(slot => !reservedIntval.includes(slot.time));
     
-            freeIntvals.forEach(time => {
+            freeIntvals.forEach(slot => {
                 const labelForm = document.createElement("label");
                 const inputForm = document.createElement("input");
+                const isPastTime = (selectedDate === todayStr && slot.isPast);
                 inputForm.type = "radio";
                 inputForm.name = "appointment-time";
-                inputForm.value = time;
+                inputForm.value = slot.time;
+
+                if (isPastTime) {
+                    inputForm.disabled = true;
+                    labelForm.classList.add("disabled-slot");
+                }
+
                 labelForm.appendChild(inputForm);
-                labelForm.append(`${time}`);
+                labelForm.append(`${slot.time}`);
                 intvalContainer.appendChild(labelForm);
-                
             });
 
         }
+
+        updateTimeIntvals();
 
         dateInput.addEventListener("change", () => {
             updateTimeIntvals();

@@ -423,6 +423,17 @@ h2 {
     padding: 5px 0px;
 }
 
+.disabled-slot {
+    color: #888;
+    text-decoration: line-through;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.disabled-slot input {
+    cursor: not-allowed;
+}
+
 #message-modal {
     width: 50%;
     height: 25%;

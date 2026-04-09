@@ -91,17 +91,6 @@ app.get("/admin", requireAuth, (req, res) => {
   res.render("admin.ejs", { title: "Admin oldal", page: "admin", user: req.user });
 });
 
-// app.get("/api/admin/get-appointments", requireAuth, async (req, res) => {
-//   try {
-//     const apiKey = process.env.MY_API_KEY; 
-//     const response = await axios.get(`/api/appointments/${apiKey}`);
-    
-//     res.json(response.data);
-//   } catch (error) {
-//     res.status(500).send("Hiba az adatok lekérésekor");
-//   }
-// });
-
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   console.log(email, password);

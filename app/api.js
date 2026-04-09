@@ -74,6 +74,13 @@ app.post("/api/appointments", async (req, res) => {
     return res.status(400).json({ error: "Minden mező kitöltése kötelező!" });
   }
 
+  const chosenDate = new Date(appointment_date);
+  const now = new Date();
+
+  if (chosenDate < now) {
+    return res.status(400).json({ error: "Múltbéli időpontra nem lehet foglalni!" });
+  }
+
   try {
     const conflict = await db.query(
       "SELECT * FROM appointments WHERE hairdresser_id = $1 AND appointment_date = $2",

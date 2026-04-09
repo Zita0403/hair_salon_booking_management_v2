@@ -119,7 +119,6 @@ import { messageModal } from "/assets/modules/components/messageModal.js";
 
     {
         "hairdresser_id":6,
-        "api_key":"prooktatas123",
         "customer_name":"Kiss Éva",
         "customer_phone":"06201234567",
         "appointment_date":"2025-07-08 16:30:00",
@@ -140,7 +139,6 @@ if (appointBtn) {
         }
 
         const hairdresser_id = Number(document.querySelector("#hairdresser-name").dataset.id);
-        const api_key = "prooktatas123";
         const customer_name = document.querySelector(".booking-service #client-name").value.trim();
         const customer_phone = document.querySelector(".booking-service #phone-number").value.trim();
         const dateInput = document.querySelector("#date");
@@ -148,9 +146,25 @@ if (appointBtn) {
         const appointment_date =  `${dateInput.value} ${timeInput.value}:00`;
         const service = document.querySelector("#service").value;
 
+        const selectedDateTime = new Date(`${dateInput.value} ${timeInput.value}`);
+        const now = new Date();
+
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+            
+            if (!dateInput.value) {
+                dateInput.value = today;
+            }
+        }
+
+        if (selectedDateTime < now) {
+            messageModal("Nem választhatsz múltbéli időpontot!");
+            return; 
+        }
+
         
         console.log("hairdresser_id:", hairdresser_id);
-        console.log("api_key:", api_key);
         console.log("customer_name:", customer_name);
         console.log("customer_phone:", customer_phone);
         console.log("appointment_date:", appointment_date);
@@ -160,7 +174,6 @@ if (appointBtn) {
         console.log(
             JSON.stringify({
                 hairdresser_id,
-                api_key,
                 customer_name,
                 customer_phone,
                 appointment_date,
@@ -176,7 +189,6 @@ if (appointBtn) {
                 },
                 body: JSON.stringify({
                     hairdresser_id,
-                    api_key,
                     customer_name,
                     customer_phone,
                     appointment_date,
