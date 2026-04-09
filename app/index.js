@@ -29,34 +29,37 @@ const port = 3001;
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+
 
 const apiProxy = createProxyMiddleware({
     target: 'http://localhost:4000',
     changeOrigin: true,
-    
+
+    onProxyReq: (proxyReq, req, res) => {
+        if (req.body && Object.keys(req.body).length) {
+            const bodyData = JSON.stringify(req.body);
+            proxyReq.setHeader('Content-Type', 'application/json');
+            proxyReq.setHeader('Content-Length', Buffer.byteLength(bodyData));
+            proxyReq.write(bodyData);
+        }
+        proxyReq.end(); 
+    },
     pathRewrite: (path, req) => {
-        console.log("A proxy-hoz érkező nyers path:", path);
-        const apiKey = process.env.MY_API_KEY;
-        
-        // Mivel az app.use('/api', ...) miatt a 'path' már NEM tartalmazza az /api-t
-        // pl. a kérés: /api/get-appointments -> a path itt: /get-appointments
-        
+    console.log("A proxy-hoz érkező nyers path:", path);
+    const apiKey = process.env.MY_API_KEY;
         if (path.includes('get-appointments')) {
-            // Visszatesszük az /api-t, mert a 4000-es szerver (api.js) így várja
+
             return `/api/get-appointments/${apiKey}`;
         }
-
-        // Minden más kérésnél (pl. /hairdressers) is kell az /api az elejére a cél-szervernek
+        if (path.includes('appointments')) {
+            return `/api/appointments`;
+        }
         return `/api${path}`;
-    },
-    onProxyRes: (proxyRes, req, res) => {
-        console.log(`Proxy válasz: ${proxyRes.statusCode} ${req.method} ${req.url}`);
     }
 });
 
 app.use('/api', apiProxy);
-
+app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "..", "/public")));
 

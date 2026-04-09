@@ -16,11 +16,13 @@ export function validateForm () {
 
     const appointment_date =  `${dateInput.value} ${timeInput.value}:00`;
     const service = document.querySelector("#service").value;
+    const phoneRegex = /^(\+36|06|36)(?:\s?)(?:1|20|30|31|70|80|90)(?:\s?)([0-9]{3})(?:\s?)([0-9]{4})$/;
+    const oldPhoneRegex = /([+][36]{2}|[06]{2})(\s*-?\s*)([1-9]{2})(\s*-?\/?\s*)([0-9]{3})(\s*-?\s*)([0-9]{4})/;
 
     if (!customer_name) {
         messageModal("Kérlek add meg a neved az időpontfoglaláshoz!");
         return false;
-    } else if (!customer_phone || !customer_phone.match(/([+][36]{2}|[06]{2})(\s*-?\s*)([1-9]{2})(\s*-?\/?\s*)([0-9]{3})(\s*-?\s*)([0-9]{4})/)) {
+    } else if (!customer_phone || !customer_phone.match(/^(\+36|06|36)(?:\s?)(?:1|20|30|31|70|80|90)(?:\s?)([0-9]{3})(?:\s?)([0-9]{4})$/)) {
         messageModal("Kérlek addj meg egy érvényes telefonszámot az időpontfoglaláshoz!");
         return false;
     } else if (!service) {
