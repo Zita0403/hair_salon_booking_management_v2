@@ -32,10 +32,13 @@ const apiProxy = createProxyMiddleware({
     changeOrigin: true,
     pathRewrite: (path, req) => {
         const apiKey = process.env.MY_API_KEY;
-        if (path.includes('/get-appointments')) {
+
+        
+        if (path.includes('get-appointments')) {
             return `/api/get-appointments/${apiKey}`;
         }
-        return `/api${path}`; 
+
+        return path.startsWith('/api') ? path : `/api${path}`;
     },
     onProxyRes: (proxyRes, req, res) => {
         console.log(`Proxy válasz: ${proxyRes.statusCode} ${req.method} ${req.url}`);

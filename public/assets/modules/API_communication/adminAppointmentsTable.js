@@ -6,7 +6,7 @@ console.log("Admin felület lefoglalt időpontok táblázata");
 
 export async function renderDashboardTable () {
     try {
-        const response = await fetch(`/api/get-appointments/:apiKey`);
+        const response = await fetch(`/api/get-appointments`);
         const appointments = await response.json();
         const tableBody = document.querySelector("#appointments-table tbody");
         tableBody.innerHTML = "";
