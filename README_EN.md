@@ -78,6 +78,7 @@ DB_PASSWORD=your_password
 DB_PORT=5432
 JWT_SECRET=your_super_secret_key
 MY_API_KEY=your_api_key_for_backend_communication
+PORT=3002
 ```
 
 4. Database Initialization:
@@ -88,7 +89,7 @@ MY_API_KEY=your_api_key_for_backend_communication
 5. Starting the Application:
 
 ```text
-node index.js  # Frontend server (port 3000)
+node index.js  # Frontend server (port 3002)
 node api.js    # API server (port 4000)
 ```
 

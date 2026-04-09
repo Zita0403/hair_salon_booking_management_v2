@@ -25,7 +25,7 @@ const db = new pg.Client({
 db.connect();
 
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3002;
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));

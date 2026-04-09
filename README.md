@@ -80,6 +80,7 @@ DB_PASSWORD=your_password
 DB_PORT=5432
 JWT_SECRET=your_super_secret_key
 MY_API_KEY=your_api_key_for_backend_communication
+PORT=3002
 ```
 
 4. Adatbázis inicializálása:
@@ -89,7 +90,7 @@ MY_API_KEY=your_api_key_for_backend_communication
 5. Indítás: 
 
 ```text
-node index.js  # Frontend szerver (port 3000)
+node index.js  # Frontend szerver (port 3002)
 node api.js    # API szerver (port 4000)
 ```
 
