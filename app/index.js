@@ -24,7 +24,7 @@ const db = new pg.Client({
 db.connect();
 
 const app = express();
-const port = 3000;
+const port = 3001;
 const API_URL = "http://localhost:4000";
 
 app.use(cookieParser());
@@ -61,7 +61,7 @@ app.get("/admin", requireAuth, (req, res) => {
   res.render("admin.ejs", { title: "Admin oldal", page: "admin", user: req.user });
 });
 
-app.get("/admin/get-appointments", requireAuth, async (req, res) => {
+app.get("/api/admin/get-appointments", requireAuth, async (req, res) => {
   try {
     const apiKey = process.env.MY_API_KEY; 
     const response = await axios.get(`http://localhost:4000/api/appointments/${apiKey}`);

@@ -14,13 +14,15 @@ const db = new pg.Client({
   port: process.env.DB_PORT,
 });
 
-db.connect();
+db.connect()
+  .then(() => console.log("Connected to PostgreSQL (API)"))
+  .catch(err => console.error("Database connection error", err.stack));
 
 const app = express();
 const port = 4000;
 
 app.use(cors({
-  origin: "http://localhost:3000",
+  origin: ["https://hairsalon.zita.dev", "http://localhost:3001"],
   credentials: true
 }));
 
