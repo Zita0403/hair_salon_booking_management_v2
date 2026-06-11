@@ -109,6 +109,13 @@ To log in for testing purposes:
 This password is added to the database in encrypted form by running the hair_salon.sql script. After logging in, the system starts a JWT-based session.
 3. Session Management: Upon successful login, the system generates a JWT, which is stored in a HttpOnly cookie for secure browsing.
 
+## Accessing the Website
+
+Live Demo
+The project is available live at the following link: **[hairsalon.zita.dev](https://hairsalon.zita.dev)**
+
+- [Open Home page:](http://localhost:3002/)
+
 ## Author
 Developed by: Zita Lukács
 Date: September 2025
