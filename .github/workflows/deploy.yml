@@ -31,11 +31,9 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-            export PATH=$PATH:$HOME/.nvm/versions/node/$(nvm current)/bin
-            cd /var/www/hair_salon
+            [ -f ~/.bashrc ] && source ~/.bashrc
+            [ -f ~/.profile ] && source ~/.profile
+            cd /var/www/hair_salon || exit 1
             npm install --omit=dev
             pm2 restart hair-salon-frontend --update-env || pm2 start index.js --name "hair-salon-frontend"
             pm2 restart hair-salon-api --update-env || pm2 start api.js --name "hair-salon-api"
