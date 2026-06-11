@@ -35,6 +35,18 @@ jobs:
             [ -f ~/.profile ] && source ~/.profile
             cd /var/www/hair_salon || exit 1
             npm install --omit=dev
-            pm2 restart hair-salon-frontend --update-env || pm2 start index.js --name "hair-salon-frontend"
-            pm2 restart hair-salon-api --update-env || pm2 start api.js --name "hair-salon-api"
+            if pm2 list | grep -q "hair-salon-frontend"; then
+              echo "A frontend már fut, újraindítás..."
+              pm2 restart hair-salon-frontend --update-env
+            else
+              echo "A frontend még nem fut, első indítás..."
+              pm2 start index.js --name "hair-salon-frontend"
+            fi
+            if pm2 list | grep -q "hair-salon-api"; then
+              echo "Az API már fut, újraindítás..."
+              pm2 restart hair-salon-api --update-env
+            else
+              echo "Az API még nem fut, első indítás..."
+              pm2 start api.js --name "hair-salon-api"
+            fi
             pm2 save
