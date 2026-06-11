@@ -1,0 +1,42 @@
+name: Deploy Hair Salon
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Sync Files to Server
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          ARGS: "-rlgoDzvc --delete"
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: "/var/www/hair_salon" 
+          EXCLUDE: "/node_modules/, /.git/, /.github/, /.env" 
+
+      - name: Execute Remote SSH Commands
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+            export PATH=$PATH:$HOME/.nvm/versions/node/$(nvm current)/bin
+            cd /var/www/hair_salon
+            npm install --omit=dev
+            pm2 restart hair-salon-frontend --update-env || pm2 start index.js --name "hair-salon-frontend"
+            pm2 restart hair-salon-api --update-env || pm2 start api.js --name "hair-salon-api"
+            pm2 save

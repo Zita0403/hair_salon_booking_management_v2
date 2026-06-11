@@ -29,11 +29,14 @@
     </div>
     <!-- Időpontfoglalás ablak -->
     <div id="booking-modal" class="modal hidden">
-        <button id="close-btn"><i class="fa-solid fa-x"></i></button>
+        <button id="close-btn"><i class="fa-x"></i></button>
         <div class="booking-service">
             <h2>Időpontfoglalás</h2>
             <h3 id="hairdresser-name"></h3>
             <form action="" class="booking" method="post">
+                <div class="test-notice-box">
+                    <i class="fa-solid fa-triangle-exclamation"></i> <p><strong>Figyelem:</strong> Ez egy tesztalkalmazás. Kérlek, a funkciók kipróbálásához <span>NE adj meg valós személyes adatokat!</span> Használj kitalált nevet és telefonszámot.</p>
+                </div>
                 <label for="service">Szolgáltatások:</label>
                 <select name="service" id="service" class="services-list" required>
                     <option value="" disabled selected>Válassz egy szolgáltatást</option>
@@ -53,7 +56,7 @@
         </div>
     </div>
     <div id="message-modal" class="modal hidden">
-        <button id="m-close-btn"><i class="fa-solid fa-x"></i></button>
+        <button id="m-close-btn"><i class="fa-x"></i></button>
         <div>
             <p id="message-text"></p>
         </div>

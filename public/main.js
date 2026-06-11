@@ -114,18 +114,6 @@ renderPriceTable();
 import { validateForm } from "/assets/modules/functionality/formValidate.js"
 import { messageModal } from "/assets/modules/components/messageModal.js";
 
-/*
-    Példa adatok
-
-    {
-        "hairdresser_id":6,
-        "customer_name":"Kiss Éva",
-        "customer_phone":"06201234567",
-        "appointment_date":"2025-07-08 16:30:00",
-        "service":"hajvágás"
-    }
-*/
-
 const appointBtn = document.querySelector("#appointment-btn");
 
 if (appointBtn) {

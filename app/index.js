@@ -9,6 +9,7 @@ import jwt from "jsonwebtoken";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createProxyMiddleware } from 'http-proxy-middleware';
+import { title } from "process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,6 +24,19 @@ const db = new pg.Client({
   port: process.env.DB_PORT,
 });
 db.connect();
+
+async function cleanupTestData() {
+  try {
+    await db.query("DELETE FROM appointments WHERE appointment_date < NOW() - INTERVAL '1 day'");
+    console.log("🕒 [Adatbázis]: Az automatikus takarítás sikeresen lefutott. A régi tesztadatok törölve.");
+  } catch (error) {
+    console.error("⚠️ [Adatbázis hiba]: Nem sikerült az automatikus takarítás:", error);
+  }
+}
+
+cleanupTestData();
+
+setInterval(cleanupTestData, 24 * 60 * 60 * 1000);
 
 const app = express();
 const port = process.env.PORT || 3002;
@@ -90,6 +104,10 @@ app.get("/login", (req, res) => {
 app.get("/admin", requireAuth, (req, res) => {
   res.render("admin.ejs", { title: "Admin oldal", page: "admin", user: req.user });
 });
+
+app.get("/privacy", (req, res) => {
+  res.render("privacy.ejs", {title: "Adatkezelési Tájékoztató", page: "privacy"});
+})
 
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
