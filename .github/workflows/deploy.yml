@@ -31,12 +31,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            [ -f ~/.bashrc ] && source ~/.bashrc
-            [ -f ~/.profile ] && source ~/.profile
-            cd /var/www/hair_salon || exit 1
+            cd /var/www/hair_salon/app
             npm install --omit=dev
-            pm2 delete hair-salon-frontend || true
-            pm2 delete hair-salon-api || true
-            pm2 start index.js --name "hair-salon-frontend"
-            pm2 start api.js --name "hair-salon-api"
+            pm2 startOrRestart ecosystem.config.js
             pm2 save

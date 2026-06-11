@@ -197,6 +197,8 @@ h2 {
     transform: translate(-50%, -50%);
     width: 90%;
     height: auto;
+    max-height: 90vh; 
+    overflow-y: auto;
     border: none;
     background-color: rgba(0, 0, 0, 0.741); 
     backdrop-filter: blur(30px);
