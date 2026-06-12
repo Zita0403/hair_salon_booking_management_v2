@@ -29,7 +29,7 @@
     </div>
     <!-- Időpontfoglalás ablak -->
     <div id="booking-modal" class="modal hidden">
-        <button id="close-btn"><i class="fa-x"></i></button>
+        <button id="close-btn" aria-label="Ablak bezárása"><i class="fa-x"></i></button>
         <div class="booking-service">
             <h2>Időpontfoglalás</h2>
             <h3 id="hairdresser-name"></h3>
@@ -51,12 +51,12 @@
                 <input type="text" id="client-name" required>
                 <label for="phone-number">Telefonszám:</label>
                 <input type="text" id="phone-number" required>
-                <button id="appointment-btn" type="submit">Foglalás</button>
+                <button id="appointment-btn" type="submit" aria-label="Időpont lefoglalása">Foglalás</button>
             </form>
         </div>
     </div>
     <div id="message-modal" class="modal hidden">
-        <button id="m-close-btn"><i class="fa-x"></i></button>
+        <button id="m-close-btn" aria-label="Ablak bezárása"><i class="fa-x"></i></button>
         <div>
             <p id="message-text"></p>
         </div>
