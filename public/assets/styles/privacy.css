@@ -11,6 +11,7 @@ body {
 
 .privacy-container {
     max-width: 850px;
+    width: 85%;
     margin: 60px auto;
     padding: 50px 40px;
     background: rgba(25, 25, 25, 0.75);
