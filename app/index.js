@@ -28,9 +28,9 @@ db.connect();
 async function cleanupTestData() {
   try {
     await db.query("DELETE FROM appointments WHERE appointment_date < NOW() - INTERVAL '1 day'");
-    console.log("🕒 [Adatbázis]: Az automatikus takarítás sikeresen lefutott. A régi tesztadatok törölve.");
+    console.log("[Adatbázis]: Az automatikus takarítás sikeresen lefutott. A régi tesztadatok törölve.");
   } catch (error) {
-    console.error("⚠️ [Adatbázis hiba]: Nem sikerült az automatikus takarítás:", error);
+    console.error("[Adatbázis hiba]: Nem sikerült az automatikus takarítás:", error);
   }
 }
 
@@ -133,10 +133,9 @@ app.post("/login", async (req, res) => {
     // Token létrehozása
     const token = jwt.sign({ user_id: user.id, role: user.user_role }, process.env.JWT_SECRET, { expiresIn: "1h" });
 
-
     res.cookie("token", token, {
       httpOnly: true,
-      maxAge: 60 * 60 * 1000 // 1 óra
+      maxAge: 60 * 60 * 1000
     });
 
     res.redirect("/admin");
