@@ -12,7 +12,7 @@ body {
 /* Header */
 header {
     background-color: var(--light-background-color);
-    background-image: url(../images/pexels-nickoloui-1319460.jpg);
+    background-image: url(../images/pexels-nickoloui-1319460.webp);
     background-repeat: no-repeat;
     background-size: cover;
     clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 0% 100%); 
