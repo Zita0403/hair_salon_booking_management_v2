@@ -3,6 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import pg from "pg";
 import dotenv from "dotenv";
+import helmet from "helmet";
 
 dotenv.config();
 
@@ -20,6 +21,8 @@ db.connect()
 
 const app = express();
 const port = 4000;
+
+app.use(helmet());
 
 app.use(cors({
   origin: ["https://hairsalon.zita.dev", "http://localhost:3001"],
