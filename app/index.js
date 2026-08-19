@@ -43,7 +43,10 @@ const port = process.env.PORT || 3002;
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
 const apiProxy = createProxyMiddleware({
     target: 'http://localhost:4000',
