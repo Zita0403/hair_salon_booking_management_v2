@@ -4,8 +4,14 @@ import bodyParser from "body-parser";
 import pg from "pg";
 import dotenv from "dotenv";
 import helmet from "helmet";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const db = new pg.Client({
   user: process.env.DB_USER,
