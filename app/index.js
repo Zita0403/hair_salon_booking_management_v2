@@ -63,7 +63,7 @@ const apiProxy = createProxyMiddleware({
     pathRewrite: (path, req) => {
     console.log("A proxy-hoz érkező nyers path:", path);
     const apiKey = process.env.MY_API_KEY;
-    console.log("Aktív API kulcs a proxiban:", apiKey);
+
         if (path.includes('get-appointments')) {
             console.log("A proxy által generált végleges path:", finalPath);
             return `/api/get-appointments/${apiKey}`;
