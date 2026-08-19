@@ -9,7 +9,6 @@ import jwt from "jsonwebtoken";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createProxyMiddleware } from 'http-proxy-middleware';
-import { title } from "process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -76,7 +75,6 @@ const apiProxy = createProxyMiddleware({
 });
 
 app.use('/api', apiProxy);
-app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, "..", "/public")));
 
