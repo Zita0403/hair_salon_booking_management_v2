@@ -65,8 +65,10 @@ const apiProxy = createProxyMiddleware({
     const apiKey = process.env.MY_API_KEY;
 
         if (path.includes('get-appointments')) {
+            const finalPath = `/api/get-appointments/${apiKey}`;
+            
+            return finalPath;
             console.log("A proxy által generált végleges path:", finalPath);
-            return `/api/get-appointments/${apiKey}`;
         }
         if (path.includes('appointments')) {
             return `/api/appointments`;
