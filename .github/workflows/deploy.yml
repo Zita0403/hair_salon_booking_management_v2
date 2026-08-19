@@ -22,7 +22,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USER }}
           TARGET: "/var/www/hair_salon" 
-          EXCLUDE: "/node_modules/, /.git/, /.github/, /.env" 
+          EXCLUDE: "/node_modules/, /.git/, /.github/, app/.env" 
 
       - name: Execute Remote SSH Commands
         uses: appleboy/ssh-action@v1.0.3
