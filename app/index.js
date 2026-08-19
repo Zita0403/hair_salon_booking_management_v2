@@ -13,7 +13,7 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 const db = new pg.Client({
   user: process.env.DB_USER,
