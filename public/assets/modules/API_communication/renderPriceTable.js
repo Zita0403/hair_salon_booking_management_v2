@@ -1,4 +1,4 @@
-console.log("Árlista táblázat");
+// console.log("Árlista táblázat");
 /*
     Főoldalon szereplő árlistához a szolgáltatások lekérdezése hozzá a fiktív árlista felhasználása és ártáblázat generálása
 */

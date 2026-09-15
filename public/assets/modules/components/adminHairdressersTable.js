@@ -1,4 +1,4 @@
-console.log("Admin felület fodrászok adatai táblázat");
+// console.log("Admin felület fodrászok adatai táblázat");
 import { getHairdressers } from "/assets/modules/API_communication/fetchHairdressersData.js";
 
 export async function renderHairdresserList() {

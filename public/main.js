@@ -1,4 +1,4 @@
-console.log("Fő javaScript fájl");
+// console.log("Fő javaScript fájl");
 
 /*
     Navigációs sáv kinézete scrollozásnál √

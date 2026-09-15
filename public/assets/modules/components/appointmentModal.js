@@ -1,4 +1,4 @@
-console.log("Időpontfoglaló ablak kinézete, működése");
+// console.log("Időpontfoglaló ablak kinézete, működése");
 import { fetchAppointments } from "/assets/modules/API_communication/appointmentManaging.js";
 //Időpontfoglalás
 export function bookingModal () {

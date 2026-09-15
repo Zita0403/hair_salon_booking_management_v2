@@ -1,4 +1,4 @@
-console.log("Foglalások kezelése");
+// console.log("Foglalások kezelése");
 /*
     Foglalt időpontok kezelése
 */

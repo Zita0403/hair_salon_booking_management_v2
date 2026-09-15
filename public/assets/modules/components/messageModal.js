@@ -1,4 +1,4 @@
-console.log("Felugró tájékoztató ablakok");
+// console.log("Felugró tájékoztató ablakok");
 /*
     Felugró tájékoztató ablak
 */

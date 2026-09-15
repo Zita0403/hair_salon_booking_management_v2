@@ -1,4 +1,4 @@
-console.log("Admin felület lefoglalt időpontok táblázata");
+// console.log("Admin felület lefoglalt időpontok táblázata");
 
 /*
     A lefoglalt időpontok megjelenítése az admin oldalon táblázatban

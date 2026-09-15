@@ -1,4 +1,4 @@
-console.log("Idősávok létrehozása az időpontfoglaláshoz");
+// console.log("Idősávok létrehozása az időpontfoglaláshoz");
 /*
     30 perces idősávok létrehozása a fodrászok munkaideje alapján fodrászonként -> radio button 
 */

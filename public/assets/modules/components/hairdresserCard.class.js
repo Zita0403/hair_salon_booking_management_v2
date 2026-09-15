@@ -1,4 +1,4 @@
-console.log("Fodrász kártya");
+// console.log("Fodrász kártya");
 /*
     Fodrász kártya terv
         - felhasználva a fodrászok lekérdezett adatait és az ott felhasznált képeket az imgToHairdressers objektumból

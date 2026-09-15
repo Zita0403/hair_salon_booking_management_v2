@@ -1,4 +1,4 @@
-console.log("Form validáció");
+// console.log("Form validáció");
 
 import { messageModal } from "/assets/modules/components/messageModal.js";
 

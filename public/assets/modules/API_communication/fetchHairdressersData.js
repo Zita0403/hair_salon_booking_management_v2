@@ -1,4 +1,4 @@
-console.log("Fodrászok adatainak lekérdezése fetch()");
+// console.log("Fodrászok adatainak lekérdezése fetch()");
 /*
     Fodrászok adatainak lekérdezése a kártyákon való megjelenítéshez
         - munkaidő formázása
